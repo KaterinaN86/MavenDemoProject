@@ -157,7 +157,32 @@ Simple java Maven "Hello world" project
 - **jar** files can also be found in Maven's local repository which is a directory on the local machine that stores all the project artifacts. Usually, this directory is named **.m2**.
 
 ## Upgrading project's version
-- Upgraded version can be defined in parent **pom** file using the **<revision>** tag which is embedded in the **properties** tag: ``` <revision>DEMO-VERSION-1.0</revision>``` 
+- Upgraded version can be defined in parent **pom** file using the **<revision>** tag which is embedded in the **properties** tag:
+```
+<properties>
+  <revision>DEMO-VERSION-1.0</revision>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <maven.compiler.source>17</maven.compiler.source>
+  <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+```
+- In the **<parent>** tag of each child we use the specified version using the **revision** property:
+```
+    <parent>
+        <artifactId>MavenDemoProject</artifactId>
+        <groupId>org.example</groupId>
+        <version>${revision}</version>
+    </parent>
+```
+- Version can be automatically updated in parent and child projects **pom** files by using ```versions:set``` from the [versions-maven plugin](https://www.mojohaus.org/versions-maven-plugin/):
+```
+mvn versions:set -DnewVersion=DEMO-VERSION-1.0
+```
+- Changes can be reverted using command: ```mvn versions:revert``` or committed using ```mvn versions:commit```
+
+  - **Note:** to dispense of generated backup poms the following command can be used ```mvn versions:set -DnewVersion=DEMO-VERSION-1.0 -DgenerateBackupPoms=false```
+  
+- After changing the version of the parent and child projects all projects are built with ```mvn install``` command, created **.jar** files will be renamed accordingly new version (example: ```ModuleOneDemoProject-1.0-SNAPSHOT.jar``` will be renamed to ```ModuleOneDemoProject-DEMO-VERSION-1.0.jar```) in the corresponding **target** folder of the child project.
 
   
      
