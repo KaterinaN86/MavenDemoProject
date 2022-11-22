@@ -1,10 +1,10 @@
 Simple java Maven "Hello world" project
 ==========================================================================
-  ## Parent `MavenDemoProject` with two child projects, `ModuleOneDemoProject` and `ModuleTwoDemoProject` 
+  ## Parent **MavenDemoProject** with two child projects, **ModuleOneDemoProject** and **ModuleTwoDemoProject**
 
-- Declared method `getAppName()` in class `ModuleOneApp` of child project `ModuleOneDemoProject` so this method can be called in **main** method of class `ModuleTwoApp` in child project `ModuleTwoDemoProject`.
+- Declared method `getAppName()` in class `ModuleOneApp` of child project `ModuleOneDemoProject`, called by **main** method of class `ModuleTwoApp` in child project `ModuleTwoDemoProject`.
 
-- Parent project contains `App` class whose **main** method prints **Hello world!** in console.
+- Parent project contains `App` class with **main** method that prints **Hello world!** in console.
 
   ## Adding dependencies to projects using dependency management
 
@@ -152,7 +152,7 @@ Simple java Maven "Hello world" project
     ````
   ## Building projects
 - Projects can be built using command: ```mvn install```.
-- If only tests need to be executed command: ```mvn test``` can be used. **Clean** can be added in before **install** or **test** when there is a need to clear existing classes from previous compile.
+- If only tests need to be executed, command: ```mvn test``` can be used. **Clean** can be added before **install** or **test** to clear existing classes from previous compile.
 - **jar** files for each child project are stored in target corresponding **target** project folders: ```MavenDemoProject\ModuleOneDemoProject\target``` and ```MavenDemoProject\ModuleTwoDemoProject\target```.
 - **jar** files can also be found in Maven's local repository which is a directory on the local machine that stores all the project artifacts. Usually, this directory is named **.m2**.
 
@@ -182,7 +182,7 @@ mvn versions:set -DnewVersion=DEMO-VERSION-1.0
 
   - **Note:** to dispense of generated backup poms the following command can be used ```mvn versions:set -DnewVersion=DEMO-VERSION-1.0 -DgenerateBackupPoms=false```
   
-- After changing the version of the parent and child projects all projects are built with ```mvn install``` command, created **.jar** files will be renamed accordingly new version (example: ```ModuleOneDemoProject-1.0-SNAPSHOT.jar``` will be renamed to ```ModuleOneDemoProject-DEMO-VERSION-1.0.jar```) in the corresponding **target** folder of the child project.
+- After upgrading version and all projects are built with ```mvn install``` command, created **.jar** files will be renamed accordingly (example: ```ModuleOneDemoProject-1.0-SNAPSHOT.jar``` will be renamed to ```ModuleOneDemoProject-DEMO-VERSION-1.0.jar```) in the corresponding **target** folder of the child project.
 
   
      
