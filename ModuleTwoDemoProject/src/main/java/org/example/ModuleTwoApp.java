@@ -5,6 +5,12 @@ package org.example;
  */
 public class ModuleTwoApp
 {
+    /**
+     * Method to be called from parent project
+     */
+    public static void printAppName(){
+        System.out.println(ModuleOneApp.getAppName());
+    }
     public static void main(String[] args){
         System.out.println(ModuleOneApp.getAppName());
     }

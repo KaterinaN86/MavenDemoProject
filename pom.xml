@@ -50,6 +50,12 @@
                 <artifactId>plexus-component-annotations</artifactId>
                 <version>2.0.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven</artifactId>
+                <version>3.8.6</version>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -76,6 +82,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>mavenDemo-app</finalName>
         <pluginManagement>
             <plugins>
                 <!--> Maven core plugin configuration, takes effect immediately <-->
@@ -102,6 +109,19 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>2.3.0.RELEASE</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                            <configuration>
+                                <classifier>spring-boot</classifier>
+                                <mainClass>
+                                    org.example.App
+                                </mainClass>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
