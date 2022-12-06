@@ -14,6 +14,6 @@ RUN mkdir /app
 #cpoies .jar to app dir
 RUN cp /build/target/mavenDemo-app.jar /app/
 
-EXPOSE 8080
+EXPOSE 8081
 # runs the app
 ENTRYPOINT ["java", "-jar", "/app/mavenDemo-app.jar"]
