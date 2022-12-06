@@ -1,4 +1,4 @@
-Simple java Maven "Hello world" project with multiple modules
+Simple java Maven "Hello world" project 
 ==========================================================================
   ## Parent **MavenDemoProject** with two child projects, **ModuleOneDemoProject** and **ModuleTwoDemoProject**
 
